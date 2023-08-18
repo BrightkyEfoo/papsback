@@ -1,6 +1,6 @@
 import { Request } from "express"
 import { JwtPayload } from "jsonwebtoken"
-
+import { Query } from 'express-serve-static-core';
 
 
 export interface reqUser {
@@ -13,7 +13,8 @@ export interface myDecodedToken extends JwtPayload{
 }
 
 
-export interface myRequest<B=any , Q=any> extends Request{
+export interface myRequest<Q extends Query,B=any> extends Request{
     user? : myDecodedToken,
-    body : B
+    body : B,
+    query : Q
 }

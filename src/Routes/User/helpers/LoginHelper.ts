@@ -6,12 +6,14 @@ import jwt from 'jsonwebtoken';
 import { private_key } from '../../../auth/private_key';
 
 export const loginUser = (
-  req: myRequest<{ email?: string; password?: string }>,
+  req: myRequest<{}, { email?: string; password?: string }>,
   res: Response
 ) => {
   const { email, password } = req.body;
-  if(email === undefined ||  password === undefined){
-    return res.status(400).json({msg :'les champs email et mot de passe sont requis.'})
+  if (email === undefined || password === undefined) {
+    return res
+      .status(400)
+      .json({ msg: 'les champs email et mot de passe sont requis.' });
   }
   User.findOne({ where: { email } })
     .then(user => {

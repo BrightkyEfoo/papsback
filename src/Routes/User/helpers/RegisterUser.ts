@@ -6,7 +6,7 @@ import jwt from 'jsonwebtoken';
 import { private_key } from '../../../auth/private_key';
 
 export const registerUser = (
-  req: myRequest<{
+  req: myRequest<{},{
     name?: string;
     email?: string;
     password?: string;
